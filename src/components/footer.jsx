@@ -26,36 +26,47 @@ const Footer = () => {
   };
 
   const modalAnim = {
-    initial: {
-      right: "-100%",
-    },
+    initial: { right: "-100%" },
     animate: {
       right: "0%",
-      transition: {
-        duration: 0.5,
-        ease: [0.33, 1, 0.68, 1],
-      },
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
     },
     exit: {
       right: "-100%",
-      transition: {
-        duration: 0.5,
-        ease: [0.33, 1, 0.68, 1],
-      },
+      transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] },
     },
   };
+
+  const footerModalData = {
+    title: "COPO CUPDALE®",
+    image: "/CUPDALE.png",
+    pricePix: "R$465,99",
+    pricePixLabel: "no Pix",
+    priceParcel: "R$ 279,99",
+    priceParcelLabel: "em até 2x sem juros",
+    buttonText: "Reservar",
+    featuresTitle: "Características",
+    features: [
+      { label: "Capacidade", value: "750ml" },
+      { label: "Controle de Temperatura", value: "0°C até 90°C" },
+      { label: "Material", value: "Aço Inox Premium" },
+      { label: "Duração da Bateria", value: "Até 24h de uso" },
+      { label: "Carregamento", value: "USB-C Rápido" },
+    ],
+  };
+
   return (
-    <footer className="relative w-full bg-bg-2 p-10">
-      <div className="flex flex-col items-start justify-center max-lg:justify-start">
-        <div className="w-full h-[75dvh] flex items-center justify-between  max-lg:flex-col max-lg:items-start">
+    <footer className="relative w-full bg-bg-2">
+      <div className=" p-10 flex flex-col items-start justify-center max-lg:justify-start max-lg:p-5 ">
+        <div className="w-full h-[75dvh] flex items-center justify-between max-lg:h-full max-lg:flex-col max-lg:items-start">
           <div className="h-fit overflow-hidden ">
             <motion.h1
-              className="text-p text-[3.5rem] font-semibold tracking-tight max-md:text-[2.5rem]"
+              className="text-p text-[3.5rem] font-semibold tracking-tight leading-[1.2] max-md:text-[2.5rem] "
               variants={textSlideAnim}
               initial="initial"
               animate="animate2"
             >
-              Reserve a sua{" "}
+              Reserve o seu{" "}
               <span className="text-red-500">
                 Cupdale{" "}
                 <span className="text-[2rem] font-normal align-top">®</span>
@@ -64,8 +75,8 @@ const Footer = () => {
             </motion.h1>
           </div>
 
-          <div className="z-20">
-            <div className="mb-8  max-w-[500px] w-full">
+          <div className="z-20 max-lg:py-20">
+            <div className="mb-8  max-w-[500px] w-full max-lg:max-w-full">
               <p className="w-full text-p/75 text-[1rem] leading-relaxed font-normal">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam
                 quae ipsam dicta optio voluptatum, sequi eum eius nostrum iste!
@@ -90,89 +101,85 @@ const Footer = () => {
           <>
             <motion.div
               {...modalAnim}
-              className="fixed top-0 right-0 w-[32vw] h-screen bg-bg z-[100] p-8 shadow-2xl flex flex-col gap-5 max-ds:w-[50vw] max-lg:w-[85vw] max-md:w-full"
+              className="fixed top-0 right-0 w-[32vw] h-screen bg-bg z-[100] p-5 shadow-2xl flex flex-col gap-5 max-ds:w-[50vw] max-lg:w-[85vw] max-md:w-full max-lg:px-3"
             >
-              <div className="max-w-[600px] w-full flex flex-col justify-start items-center px-4">
-                <p className="mb-6 text-s text-[2rem] font-bold tracking-tight max-md:text-[1.5rem]">
-                  COPO CUPDALE® — PRETO
-                </p>
+              <div className="relative mb-10 top-0 w-full flex justify-end">
+                <button
+                  className="text-s font-medium text-[.75rem] uppercase hover:underline"
+                  onClick={() => setActiveModal(null)}
+                >
+                  Fechar
+                </button>
+              </div>
+
+              <div className="max-w-[600px] w-full flex flex-col justify-center items-center px-4 max-lg:max-w-full">
+                <div className="mb-6  h-fit overflow-hidden">
+                  <motion.h2
+                    variants={textSlideAnim}
+                    initial="initial"
+                    animate="animate2"
+                    className="text-s text-[1.5rem] font-bold tracking-tight"
+                  >
+                    {footerModalData.title}
+                  </motion.h2>
+                </div>
 
                 <Image
-                  src="/CUPDALE.png"
+                  src={footerModalData.image}
                   width={1000}
                   height={1000}
-                  alt="Copo Cupdale"
+                  alt={footerModalData.title}
                   className="mb-8 w-[150px] h-[180px] object-contain"
                 />
 
-                <div className="w-full flex flex-col items-center ">
+                <div className="w-full flex flex-col items-center">
                   <p className="font-semibold text-s text-[1.25rem]">
-                    R$465,99 <span className="text-red-500 ">no Pix</span>
+                    {footerModalData.pricePix}{" "}
+                    <span className="text-red-500">
+                      {footerModalData.pricePixLabel}
+                    </span>
                   </p>
                   <p className="mb-6 font-semibold text-s text-[1rem]">
-                    ou R$ 279,99 em até 2x sem juros
+                    ou {footerModalData.priceParcel}{" "}
+                    {footerModalData.priceParcelLabel}
                   </p>
-                  <button
-                    className="w-full h-[45px] border border-red-500 text-red-500 rounded-full text-[.9rem] font-semibold flex items-center justify-center
-        hover:bg-red-500 hover:text-s transition-all duration-300 mb-6"
-                  >
-                    Reservar
+                  <button className="w-full h-[45px] border border-red-500 text-red-500 rounded-full text-[.9rem] font-semibold flex items-center justify-center hover:bg-red-500 hover:text-s transition-all duration-300 mb-6">
+                    {footerModalData.buttonText}
                   </button>
                 </div>
-                <div className="mt-4 mb-8 w-full h-[1px] bg-brd-2"></div>
 
+            
                 <div className="w-full flex flex-col items-start gap-3 mb-6">
-                  <p className="mb-2 text-s text-[2rem] font-bold tracking-tight max-md:text-[2.5rem]">
-                    Características
-                  </p>
-
-                  <div className="w-full pb-4 border-b border-brd-2 flex items-center justify-between">
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Capacidade
-                    </p>
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      750ml
-                    </p>
-                  </div>
-
-                  <div className="w-full pb-4 border-b border-brd-2 flex items-center justify-between">
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Controle de Temperatura
-                    </p>
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      0°C até 90°C
-                    </p>
-                  </div>
-
-                  <div className="w-full pb-4 border-b border-brd-2 flex items-center justify-between">
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Material
-                    </p>
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Aço Inox Premium
-                    </p>
-                  </div>
-
-                  <div className="w-full pb-4 border-b border-brd-2 flex items-center justify-between">
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Duração da Bateria
-                    </p>
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Até 24h de uso
-                    </p>
-                  </div>
-
-                  <div className="w-full pb-4 border-b border-brd-2 flex items-center justify-between">
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      Carregamento
-                    </p>
-                    <p className="text-s/80 text-[1rem] leading-relaxed font-normal">
-                      USB-C Rápido
-                    </p>
-                  </div>
+                 
+                  {footerModalData.features.map((feature, i) => (
+                    <div
+                      key={i}
+                      className="w-full mb-1 overflow-hidden h-fit  flex items-center justify-between "
+                    >
+                      <motion.p
+                        className="text-s/75 text-[1rem] leading-relaxed font-medium tracking-tight"
+                        custom={i}
+                        variants={textSlideAnim}
+                        initial="initial"
+                        animate="animate"
+                      >
+                        {feature.label}
+                      </motion.p>
+                      <motion.p
+                        className="text-s/75 text-[1rem] leading-relaxed font-medium tracking-tight"
+                        custom={i}
+                        variants={textSlideAnim}
+                        initial="initial"
+                        animate="animate"
+                      >
+                        {feature.value}
+                      </motion.p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
+
             <motion.div
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
               onClick={() => setActiveModal(null)}
@@ -184,11 +191,11 @@ const Footer = () => {
         )}
       </AnimatePresence>
 
-      <div className="absolute bottom-0 p-2  flex items-center justify-between mix-blend-exclusion">
+      <div className="absolute bottom-0 w-full p-5 flex items-center justify-between mix-blend-exclusion">
         <p className="text-s text-[.8rem]">
           © {new Date().getFullYear()} Cupdale®. Todos os direitos reservados.
         </p>
-        <p className="text-s text-[.8rem]">Feito com ❤️ por paulovdev</p>
+        <p className="text-s text-[.8rem]">Desenvolvido por paulovdev</p>
       </div>
     </footer>
   );

@@ -4,7 +4,6 @@ import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import HorizontalTransition from "@/utils/loader";
-import Image from "next/image";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const phrases = [
@@ -57,7 +56,6 @@ const modalAnim = {
 const modalData = [
   {
     id: 1,
-    icon: "/therm.png",
     title: "Tecnologia Térmica Avançada",
     description: [
       "Nosso sistema térmico inovador mantém sua bebida gelada ou quente por ",
@@ -77,7 +75,6 @@ const modalData = [
   },
   {
     id: 2,
-    icon: "/sis.png",
     title: "Switch Inteligente para Troca de Função",
     description: [
       "Com o botão Switch, alterne entre bebidas geladas ou quentes",
@@ -124,7 +121,7 @@ const HotSpot = () => {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-2 left-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
+          className="absolute bottom-15 left-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
           onMouseEnter={() => setHovered(2)}
           onMouseLeave={() => setHovered(null)}
           onClick={() => setActiveModal(2)}
@@ -149,25 +146,26 @@ const HotSpot = () => {
                 {...modalAnim}
                 className="fixed top-0 right-0 w-[32vw] h-screen bg-bg-2 z-[100] p-8 shadow-2xl flex flex-col gap-5 max-ds:w-[50vw] max-lg:w-[85vw] max-md:w-full"
               >
-                <div className="flex items-center gap-4">
-                  <Image
-                    src={modalData[activeModal - 1].icon}
-                    width={60}
-                    height={60}
-                    alt="Feature icon"
-                    className="w-[60px] h-[60px]"
-                  />
-                  <div className="h-fit overflow-hidden">
-                    <motion.h2
-                      variants={textSlideAnim}
-                      initial="initial"
-                      animate="animate2"
-                      className="text-p font-semibold text-[1.1rem]"
-                    >
-                      {modalData[activeModal - 1].title}
-                    </motion.h2>
-                  </div>
+                <div className="relative mb-10 top-0 w-full flex justify-end">
+                  <button
+                    className="text-p font-medium text-[.75rem] uppercase hover:underline"
+                    onClick={() => setActiveModal(null)}
+                  >
+                    Fechar
+                  </button>
                 </div>
+
+                <div className="h-fit overflow-hidden">
+                  <motion.h2
+                    variants={textSlideAnim}
+                    initial="initial"
+                    animate="animate2"
+                    className="text-p font-semibold text-[1.1rem]"
+                  >
+                    {modalData[activeModal - 1].title}
+                  </motion.h2>
+                </div>
+
                 <div>
                   {modalData[activeModal - 1].description.map((phrase, i) => (
                     <div key={i} className="overflow-hidden w-full">
@@ -185,9 +183,17 @@ const HotSpot = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-p font-semibold text-[1rem] mt-4 mb-2">
-                    Benefícios principais:
-                  </h3>
+                  <div className="h-fit overflow-hidden">
+                    <motion.h3
+                      variants={textSlideAnim}
+                      initial="initial"
+                      animate="animate2"
+                      className="text-p font-semibold text-[1.1rem]"
+                    >
+                      Benefícios principais:
+                    </motion.h3>
+                  </div>
+
                   <ul className="list-disc list-inside">
                     {modalData[activeModal - 1].benefits.map((phrase, i) => (
                       <div key={i} className="overflow-hidden w-full">
@@ -206,9 +212,17 @@ const HotSpot = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-p font-semibold text-[1rem] mt-4 mb-2">
-                    Como funciona:
-                  </h3>
+                  <div className="h-fit overflow-hidden">
+                    <motion.h3
+                      variants={textSlideAnim}
+                      initial="initial"
+                      animate="animate2"
+                      className="text-p font-semibold text-[1.1rem]"
+                    >
+                      Como funciona:
+                    </motion.h3>
+                  </div>
+
                   {modalData[activeModal - 1].howItWorks.map((phrase, i) => (
                     <div key={i} className="overflow-hidden w-full">
                       <motion.p
@@ -265,7 +279,7 @@ const HomePage = () => {
         <div className="absolute inset-0 w-screen h-[100dvh] z-[-1]">
           <video
             src="/video.mp4"
-            className="size-full object-cover brightness-75"
+            className="size-full object-cover brightness-50"
             autoPlay
             muted
             loop
