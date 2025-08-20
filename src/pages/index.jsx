@@ -2,9 +2,10 @@
 
 import Lenis from "lenis";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import HorizontalTransition from "@/utils/loader";
 import Image from "next/image";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const phrases = [
   "O primeiro copo inteligente que controla a temperatura.",
@@ -33,10 +34,214 @@ const textSlideAnim = {
   },
 };
 
+const modalAnim = {
+  initial: {
+    right: "-100%",
+  },
+  animate: {
+    right: "0%",
+    transition: {
+      duration: 0.5,
+      ease: [0.33, 1, 0.68, 1],
+    },
+  },
+  exit: {
+    right: "-100%",
+    transition: {
+      duration: 0.5,
+      ease: [0.33, 1, 0.68, 1],
+    },
+  },
+};
+
+const modalData = [
+  {
+    id: 1,
+    icon: "/therm.png",
+    title: "Tecnologia Térmica Avançada",
+    description: [
+      "Nosso sistema térmico inovador mantém sua bebida gelada ou quente por ",
+      "até 7 dias. Ideal para quem busca performance, praticidade e máxima",
+      "eficiência.",
+    ],
+    benefits: [
+      "Isolamento térmico triplo para retenção prolongada",
+      "Vedação hermética para evitar vazamentos",
+      "Materiais premium com alta durabilidade",
+      "Design minimalista e ergonômico",
+    ],
+    howItWorks: [
+      "Escolha a temperatura desejada e aproveite. A tecnologia inteligente ",
+      "mantém o equilíbrio térmico independentemente do clima.",
+    ],
+  },
+  {
+    id: 2,
+    icon: "/sis.png",
+    title: "Switch Inteligente para Troca de Função",
+    description: [
+      "Com o botão Switch, alterne entre bebidas geladas ou quentes",
+      "em segundos. Um sistema prático, rápido e preciso para controlar",
+      "a temperatura.",
+    ],
+    benefits: [
+      "Troca instantânea entre quente e gelado",
+      "Controle preciso e fácil de operar",
+      "Economia de energia inteligente",
+      "Design funcional e moderno",
+    ],
+    howItWorks: [
+      "Basta pressionar o botão Switch e selecionar a função desejada.",
+      "Simples, rápido e eficiente.",
+    ],
+  },
+];
+
+const HotSpot = () => {
+  const [hovered, setHovered] = useState(null);
+  const [activeModal, setActiveModal] = useState(null);
+
+  return (
+    <div className="absolute inset-0 w-full h-full">
+      <div className="relative mt-30 max-w-[500px] w-full h-[80vh] mx-auto flex items-center justify-center">
+        <motion.div
+          className="absolute top-15 right-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
+          onMouseEnter={() => setHovered(1)}
+          onMouseLeave={() => setHovered(null)}
+          onClick={() => setActiveModal(1)}
+          animate={{ scale: activeModal === 1 || hovered === 1 ? 1 : 0.4 }}
+          transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+        >
+          <motion.span
+            animate={{
+              opacity: hovered === 1 || activeModal === 1 ? 1 : 0,
+              rotate: activeModal === 1 ? 45 : 0,
+            }}
+            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <AiOutlinePlus className="text-white text-[1.25rem]" />
+          </motion.span>
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-2 left-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
+          onMouseEnter={() => setHovered(2)}
+          onMouseLeave={() => setHovered(null)}
+          onClick={() => setActiveModal(2)}
+          animate={{ scale: activeModal === 2 || hovered === 2 ? 1 : 0.4 }}
+          transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+        >
+          <motion.span
+            animate={{
+              opacity: hovered === 2 || activeModal === 2 ? 1 : 0,
+              rotate: activeModal === 2 ? 45 : 0,
+            }}
+            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <AiOutlinePlus className="text-white text-[1.25rem]" />
+          </motion.span>
+        </motion.div>
+
+        <AnimatePresence mode="wait">
+          {activeModal && (
+            <>
+              <motion.div
+                {...modalAnim}
+                className="fixed top-0 right-0 w-[32vw] h-screen bg-bg-2 z-[100] p-8 shadow-2xl flex flex-col gap-5 max-ds:w-[50vw] max-lg:w-[85vw] max-md:w-full"
+              >
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={modalData[activeModal - 1].icon}
+                    width={60}
+                    height={60}
+                    alt="Feature icon"
+                    className="w-[60px] h-[60px]"
+                  />
+                  <div className="h-fit overflow-hidden">
+                    <motion.h2
+                      variants={textSlideAnim}
+                      initial="initial"
+                      animate="animate2"
+                      className="text-p font-semibold text-[1.1rem]"
+                    >
+                      {modalData[activeModal - 1].title}
+                    </motion.h2>
+                  </div>
+                </div>
+                <div>
+                  {modalData[activeModal - 1].description.map((phrase, i) => (
+                    <div key={i} className="overflow-hidden w-full">
+                      <motion.p
+                        className="text-p/75 text-[1rem] leading-relaxed font-medium tracking-tight"
+                        custom={i}
+                        variants={textSlideAnim}
+                        initial="initial"
+                        animate="animate"
+                      >
+                        {phrase}
+                      </motion.p>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <h3 className="text-p font-semibold text-[1rem] mt-4 mb-2">
+                    Benefícios principais:
+                  </h3>
+                  <ul className="list-disc list-inside">
+                    {modalData[activeModal - 1].benefits.map((phrase, i) => (
+                      <div key={i} className="overflow-hidden w-full">
+                        <motion.li
+                          className="text-p/75 text-[1rem] leading-relaxed font-medium tracking-tight"
+                          custom={i}
+                          variants={textSlideAnim}
+                          initial="initial"
+                          animate="animate"
+                        >
+                          {phrase}
+                        </motion.li>
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-p font-semibold text-[1rem] mt-4 mb-2">
+                    Como funciona:
+                  </h3>
+                  {modalData[activeModal - 1].howItWorks.map((phrase, i) => (
+                    <div key={i} className="overflow-hidden w-full">
+                      <motion.p
+                        className="text-p/75 text-[1rem] leading-relaxed font-medium tracking-tight"
+                        custom={i}
+                        variants={textSlideAnim}
+                        initial="initial"
+                        animate="animate"
+                      >
+                        {phrase}
+                      </motion.p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90]"
+                onClick={() => setActiveModal(null)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
+
 const HomePage = () => {
   const lenisRef = useRef(null);
-  const [isHovered1, setIsHovered1] = useState(false);
-  const [isHovered2, setIsHovered2] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -70,95 +275,7 @@ const HomePage = () => {
           />
         </div>
 
-        <div className="absolute inset-0 w-full h-full">
-          <div className="relative mt-30 max-w-[500px] w-full h-[80vh] mx-auto flex items-center justify-center">
-            <div
-              className="absolute top-15 right-20 w-3 h-3 rounded-full bg-red-500 z-20"
-              onMouseEnter={() => setIsHovered1(true)}
-              onMouseLeave={() => setIsHovered1(false)}
-            />
-
-            <div
-              className="absolute bottom-2 left-20 w-3 h-3 rounded-full bg-red-500 z-20"
-              onMouseEnter={() => setIsHovered2(true)}
-              onMouseLeave={() => setIsHovered2(false)}
-            />
-
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isHovered1 ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              className="absolute w-[150px] h-[1px] top-[66px] -right-15 bg-red-500 origin-left z-10"
-            />
-
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isHovered2 ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              className="absolute w-[150px] h-[1px] bottom-[14px] -left-15 bg-red-500 origin-right z-10"
-            />
-
-            <motion.div
-              initial={{ opacity: 1, clipPath: "inset(0% 100% 0% 0%)" }}
-              animate={
-                isHovered1
-                  ? { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }
-                  : { opacity: 1, clipPath: "inset(0% 100% 0% 0%)" }
-              }
-              transition={{
-                duration: 0.4,
-                ease: [0.33, 1, 0.68, 1],
-              }}
-              className="absolute -top-[8px] -right-66 flex flex-col items-center justify-center max-w-[300px]"
-            >
-              <Image
-                src={"/therm.png"}
-                width={250}
-                height={250}
-                alt="feature"
-                className="mb-4 w-[40px] h-[50px]"
-              />
-              <p className="text-s text-[.7rem] font-normal uppercase indent-9">
-                Térmico que mantém a bebida
-              </p>
-              <p className="text-s text-[.7rem] font-normal uppercase">
-                gelada ou quente por até
-                <span className="text-red-500 font-bold"> 1 semana</span>.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 1, clipPath: "inset(0% 0% 0% 100%)" }}
-              animate={
-                isHovered2
-                  ? { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }
-                  : { opacity: 1, clipPath: "inset(0% 0% 0% 100%)" }
-              }
-              transition={{
-                duration: 0.4,
-                ease: [0.33, 1, 0.68, 1],
-              }}
-              className="absolute -bottom-[11px] -left-80 flex flex-col items-center justify-center max-w-[300px]"
-            >
-              <Image
-                src={"/sis.png"}
-                width={250}
-                height={250}
-                alt="feature"
-                className="mb-4 w-[50px] h-[60px]"
-              />
-              <p className="text-s text-[.7rem] font-normal uppercase ">
-                Switch para mudar a temperatura
-              </p>
-              <p className="text-s text-[.7rem] font-normal uppercase  indent-15">
-                {" "}
-                da bebida de{" "}
-                <span className="text-red-500 font-bold">quente</span> para
-                <span className="text-red-500 font-bold"> gelada</span>
-              </p>
-            </motion.div>
-          </div>
-        </div>
+        <HotSpot />
 
         <div className="size-full flex items-center justify-center">
           <div className="w-full flex items-center justify-between  max-lg:flex-col max-lg:items-start">
@@ -177,12 +294,12 @@ const HomePage = () => {
               </motion.h1>
             </div>
 
-            <div className="z-20">
-              <div className="mb-8  max-w-[500px] w-full">
+            <div className="max-w-[500px] w-full z-20">
+              <div className="mb-8">
                 {phrases.map((phrase, i) => (
                   <div key={i} className="overflow-hidden w-full">
                     <motion.p
-                      className="w-full text-s/75 text-[1.1rem] leading-relaxed font-normal"
+                      className="text-s/75 text-[1rem] leading-relaxed font-medium tracking-tight"
                       custom={i}
                       {...textSlideAnim}
                     >

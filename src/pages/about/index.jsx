@@ -7,24 +7,22 @@ import { useEffect, useRef } from "react";
 import { SiFacebook, SiInstagram, SiX } from "react-icons/si";
 
 const phrases = [
-  "A Cupdale apresenta o primeiro copo inteligente: ",
-  "um design inovador capaz de alterar e manter ",
-  "a temperatura exata da sua bebida, quente ou ",
-  "gelada, garantindo a experiência perfeita do ",
-  "primeiro ao último gole, sem perder o sabor.",
+  "A Cupdale apresenta o primeiro copo inteligente: um design inovador ",
+  "capaz de alterar e manter a temperatura exata da sua bebida, ",
+  "quente ou gelada, garantindo a experiência perfeita do primeiro ao ",
+  "último gole, sem perder o sabor.",
 
   "ㅤ",
 
-  "Equipado com tecnologia avançada de controle ",
-  "térmico, o Cupdale ajusta o calor ou resfriamento ",
-  "de forma automática, adaptando-se ao seu ritmo ",
-  "e às suas preferências a cada momento do dia.",
+  "Equipado com tecnologia avançada de controle térmico, o Cupdale ",
+  "ajusta o calor ou resfriamento de forma automática, adaptando-se ",
+  "ao seu ritmo e às suas preferências a cada momento do dia.",
 
   "ㅤ",
 
-  "Mais do que um simples copo, ele redefine a forma ",
-  "como você consome suas bebidas, unindo conforto, ",
-  "inovação e liberdade em um só produto.",
+  "Mais do que um simples copo, ele redefine a forma como você",
+  "consome suas bebidas, unindo conforto, inovação e liberdade em",
+  "um só produto.",
 ];
 
 const textSlideAnim = {
@@ -82,7 +80,7 @@ const About = () => {
 
         <div className="size-full flex items-center justify-center">
           <div className="w-full flex items-center justify-between max-lg:flex-col max-lg:items-start">
-            <div className="  h-fit overflow-hidden max-lg:mb-4">
+            <div className="h-fit overflow-hidden max-lg:mb-4">
               <motion.h1
                 className="text-s text-[3.5rem] font-semibold tracking-tight  max-md:text-[2.5rem]"
                 variants={textSlideAnim}
@@ -101,7 +99,7 @@ const About = () => {
               {phrases.map((phrase, i) => (
                 <div key={i} className="overflow-hidden w-full">
                   <motion.h2
-                    className={`w-full text-s/80 text-[1.1rem] leading-relaxed font-normal`}
+                    className="text-s/75 text-[1rem] leading-relaxed font-medium tracking-tight"
                     custom={i}
                     {...textSlideAnim}
                   >

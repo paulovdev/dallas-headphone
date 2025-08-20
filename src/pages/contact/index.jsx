@@ -5,27 +5,6 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-const phrases = [
-  "A Cupdale apresenta o primeiro copo inteligente: ",
-  "um design inovador capaz de alterar e manter ",
-  "a temperatura exata da sua bebida, quente ou ",
-  "gelada, garantindo a experiência perfeita do ",
-  "primeiro ao último gole, sem perder o sabor.",
-
-  "ㅤ",
-
-  "Equipado com tecnologia avançada de controle ",
-  "térmico, o Cupdale ajusta o calor ou resfriamento ",
-  "de forma automática, adaptando-se ao seu ritmo ",
-  "e às suas preferências a cada momento do dia.",
-
-  "ㅤ",
-
-  "Mais do que um simples copo, ele redefine a forma ",
-  "como você consome suas bebidas, unindo conforto, ",
-  "inovação e liberdade em um só produto.",
-];
-
 const textSlideAnim = {
   initial: { y: "100%" },
   animate: (i) => ({
@@ -96,21 +75,21 @@ const Contact = () => {
             <form className="mb-8 max-w-[500px] w-full">
               <input
                 type="email"
-                className="mb-4 p-2 border-b border-brd-2 text-s text-[1rem] bg-transparent outline-none w-full max-w-[550px] 
+                className="mb-4 p-2 border-b border-brd-2 text-s text-[1rem] leading-relaxed font-medium tracking-tight bg-transparent outline-none w-full max-w-[550px] 
                   placeholder:text-s/50 focus:border-red-500 transition-colors duration-300"
                 placeholder="Seu e-mail"
               />
               <br />
               <input
                 type="text"
-                className="mb-4 p-2 border-b border-brd-2 text-s text-[1rem] bg-transparent outline-none w-full max-w-[550px] 
+                className="mb-4 p-2 border-b border-brd-2 text-s text-[1rem] leading-relaxed font-medium tracking-tight bg-transparent outline-none w-full max-w-[550px] 
                   placeholder:text-s/50 focus:border-red-500 transition-colors duration-300"
                 placeholder="Seu nome"
               />
               <br />
               <textarea
                 type="text"
-                className="mb-4 h-[150px] p-2 border-b border-brd-2 text-s text-[1rem] bg-transparent outline-none w-full max-w-[550px] 
+                className="mb-4 h-[150px] p-2 border-b border-brd-2 text-s text-[1rem] leading-relaxed font-medium tracking-tight bg-transparent outline-none w-full max-w-[550px] 
                   placeholder:text-s/50 focus:border-red-500 transition-colors duration-300 resize-none"
                 placeholder="Escreva sua mensagem"
               />
