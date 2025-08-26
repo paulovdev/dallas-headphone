@@ -20,6 +20,7 @@
   --color-brd: #101010;
   --color-brd-2: #262626;
 
+  --breakpoint-full-ds: 1900px;
   --breakpoint-ds: 1262px;
   --breakpoint-lg: 992px;
   --breakpoint-md: 768px;
@@ -46,7 +47,7 @@ body {
   width: 100vw;
   height: 100vh;
   content: "";
-  opacity: 0.03;
+  opacity: 0.015;
   z-index: 1000;
   pointer-events: none;
   background: url("../../public/noise.gif");

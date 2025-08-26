@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import HorizontalTransition from "@/utils/loader";
 import { AiOutlinePlus } from "react-icons/ai";
+import Image from "next/image";
 
 const phrases = [
   "O primeiro copo inteligente que controla a temperatura.",
@@ -102,7 +103,7 @@ const HotSpot = () => {
     <div className="absolute inset-0 w-full h-full">
       <div className="relative mt-30 max-w-[500px] w-full h-[80vh] mx-auto flex items-center justify-center">
         <motion.div
-          className="absolute top-15 right-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
+          className="absolute top-15 right-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center  shadow-lg z-20"
           onMouseEnter={() => setHovered(1)}
           onMouseLeave={() => setHovered(null)}
           onClick={() => setActiveModal(1)}
@@ -121,7 +122,7 @@ const HotSpot = () => {
         </motion.div>
 
         <motion.div
-          className="absolute bottom-15 left-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor-pointer shadow-lg z-20"
+          className="absolute bottom-15 left-20 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center cursor- shadow-lg z-20"
           onMouseEnter={() => setHovered(2)}
           onMouseLeave={() => setHovered(null)}
           onClick={() => setActiveModal(2)}
@@ -276,16 +277,14 @@ const HomePage = () => {
   return (
     <HorizontalTransition>
       <div className="relative p-10 w-screen h-[100dvh] overflow-hidden max-lg:p-5">
-        <div className="absolute inset-0 w-screen h-[100dvh] z-[-1]">
-          <video
-            src="/video.mp4"
-            className="size-full object-cover brightness-50"
-            autoPlay
-            muted
-            loop
-            draggable="false"
-            playsInline
-            preload="auto"
+        <div className="absolute inset-0 w-screen h-[100dvh] z-[-1] select-none">
+          <Image
+            src="/cupdale-black.jpg"
+            className="size-full object-fill brightness-90 max-full-ds:object-cover"
+            width={2000}
+            height={2000}
+            alt="cupdale-background"
+            priority
           />
         </div>
 

@@ -4,6 +4,7 @@ import HorizontalTransition from "@/utils/loader";
 import Lenis from "lenis";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const textSlideAnim = {
   initial: { y: "100%" },
@@ -45,16 +46,14 @@ const Contact = () => {
   return (
     <HorizontalTransition>
       <div className="relative p-10 w-screen h-[100dvh] overflow-hidden max-lg:p-5">
-        <div className="absolute inset-0 w-screen h-[100dvh] z-[-1]">
-          <video
-            src="/video.mp4"
-            className="size-full object-cover brightness-50"
-            autoPlay
-            muted
-            loop
-            draggable="false"
-            playsInline
-            preload="auto"
+        <div className="absolute inset-0 w-screen h-[100dvh] z-[-1] select-none">
+          <Image
+            src="/cupdale-black.jpg"
+            className="size-full object-fill brightness-90 max-full-ds:object-cover"
+            width={2000}
+            height={2000}
+            alt="cupdale-background"
+            priority
           />
         </div>
 

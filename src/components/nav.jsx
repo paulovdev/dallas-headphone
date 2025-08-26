@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const textSlideAnim = {
   initial: { y: "100%" },
@@ -21,28 +21,33 @@ const navLinks = [
 const Nav = ({ pathname }) => {
   return (
     <nav className="fixed top-0 left-0 p-6 w-full flex items-center justify-end gap-8 z-50">
-      {navLinks.map((link) => (
-        <div key={`${link.href}-${pathname}`} className="h-fit overflow-hidden">
-          <motion.div
-            variants={textSlideAnim}
-            initial="initial"
-            animate="animate"
+      <AnimatePresence mode="wait">
+        {navLinks.map((link) => (
+          <div
+            key={`${link.href}-${pathname}`}
+            className="h-fit overflow-hidden"
           >
-            <Link
-              href={link.href}
-              className="text-s text-[.85rem] font-medium tracking-[.6px] flex items-center hover:opacity-75 transition-all duration-300  cursor-default"
-              style={{
-                opacity: pathname === link.href ? 1 : 0.5,
-              }}
+            <motion.div
+              variants={textSlideAnim}
+              initial="initial"
+              animate="animate"
             >
-              {pathname === link.href && (
-                <span className="relative w-1.5 h-1.5 rounded-full bg-red-500 mr-2" />
-              )}
-              {link.label}
-            </Link>
-          </motion.div>
-        </div>
-      ))}
+              <Link
+                href={link.href}
+                className="text-s text-[.85rem] font-medium tracking-[.6px] flex items-center hover:opacity-75 transition-all duration-300  cursor-default"
+                style={{
+                  opacity: pathname === link.href ? 1 : 0.5,
+                }}
+              >
+                {pathname === link.href && (
+                  <span className="relative w-1.5 h-1.5 rounded-full bg-red-500 mr-2" />
+                )}
+                {link.label}
+              </Link>
+            </motion.div>
+          </div>
+        ))}
+      </AnimatePresence>
     </nav>
   );
 };
