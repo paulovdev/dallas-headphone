@@ -34,27 +34,23 @@ const Hero = ({ onClick }) => {
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 500]);
 
   return (
-    <section className="overflow-hidden" ref={container}>
+    <section className="overflow-hidden" id="hero" ref={container}>
       <motion.div
         className="relative w-screen h-[100dvh] p-10 overflow-hidden max-tablet:h-[100dvh] max-lg:p-5"
         style={{ y }}
       >
         <div className="absolute inset-0 w-screen h-[100dvh] z-[-2]">
-          <motion.figure
-            className="size-full overflow-hidden"
-            style={{ scale }}
-          >
+          <figure className="size-full overflow-hidden">
             <img
               src="/images/headset-black.jpg"
               className="size-full object-cover brightness-75"
               fill
               alt="Dallas-background"
             />
-          </motion.figure>
+          </figure>
         </div>
 
         <div className="relative size-full flex items-center justify-center max-lg:flex-col max-lg:items-end">

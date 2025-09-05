@@ -4,7 +4,7 @@ import Menu from "./menu";
 import Reserve from "./reserve";
 import { useReserveStore } from "@/store/zustand";
 
-const Nav = () => {
+const Nav = ({ lenis }) => {
   const [menu, setMenu] = useState(false);
   const { reserve, reserveClose, reserveOpen } = useReserveStore();
 
@@ -52,7 +52,12 @@ const Nav = () => {
 
       <AnimatePresence mode="wait">
         {menu && (
-          <Menu menu={menu} setMenu={setMenu} reserveOpen={reserveOpen} />
+          <Menu
+            menu={menu}
+            setMenu={setMenu}
+            reserveOpen={reserveOpen}
+            lenis={lenis}
+          />
         )}
       </AnimatePresence>
 

@@ -22,7 +22,16 @@ const paragraphs = [
   "materiais de alta qualidade para máximo conforto.",
 ];
 
-const AsideNav = () => {
+const AsideNav = ({ lenis }) => {
+  const handleLinkClick = (target) => {
+    if (!target || !lenis?.current) return;
+    lenis.current.scrollTo(target, {
+      offset: 0,
+      duration: 0.75,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    });
+  };
+
   return (
     <>
       <aside
@@ -30,28 +39,27 @@ const AsideNav = () => {
         max-lg:w-full max-lg:justify-between max-lg:mt-0 max-lg:flex-row max-lg:py-4 max-lg:bg-s"
       >
         {asideLinks.map((link, i) => (
-          <a
+          <button
             key={i}
-            href={link.href}
-            className="relative mb-2 text-p text-[16px] font-neue-regular leading-[1] group"
+            onClick={() => handleLinkClick(link.href)}
+            className="relative mb-2 text-p text-[16px] font-neue-regular text-start leading-[1] group cursor-pointer"
           >
             {link.label}
             <div className="absolute bottom-0 bg-p w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
-          </a>
+          </button>
         ))}
       </aside>
 
       <aside className="max-lg:grid hidden w-full px-5 py-5 bg-s grid-cols-2 items-start gap-2">
         {asideLinks.map((link, i) => (
-          <div className="w-fit">
-            <a
-              key={i}
-              href={link.href}
-              className="relative mb-2 text-p text-[16px] font-neue-regular leading-[1] group"
+          <div key={i} className="w-fit">
+            <button
+              onClick={() => handleLinkClick(link.href)}
+              className="relative mb-2 text-p text-[16px] font-neue-regular text-start leading-[1] group cursor-pointer"
             >
               {link.label}
               <div className="absolute bottom-0 bg-p w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
-            </a>
+            </button>
           </div>
         ))}
       </aside>
@@ -59,13 +67,12 @@ const AsideNav = () => {
   );
 };
 
-const About = ({ onClick }) => {
+const About = ({ onClick, lenis }) => {
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    threshold: 0.05,
     triggerOnce: true,
   });
 
-  console.log(inView);
   return (
     <section className="pt-40 pb-20 h-full max-lg:pt-20" id="sobre" ref={ref}>
       <div className="px-10 max-lg:px-5">
@@ -76,7 +83,7 @@ const About = ({ onClick }) => {
             initial="initial"
             animate={inView ? "animate" : ""}
           >
-            Reserve o seu <span className="text-t">Dallas®</span> agora
+            Reserve o seu <span className="text-t">Dallas®</span> agora
           </motion.h1>
         </div>
         <div className="w-full h-fit overflow-hidden max-lg:mb-8">
@@ -92,7 +99,7 @@ const About = ({ onClick }) => {
       </div>
       <div className="relative flex items-start justify-between">
         <div className="flex-[1] sticky top-0 px-10 max-lg:hidden">
-          <AsideNav />
+          <AsideNav lenis={lenis} />
         </div>
 
         <div className="flex-[3] pt-20 size-full flex flex-col items-end">
@@ -138,16 +145,24 @@ const About = ({ onClick }) => {
               Reservar
             </button>
           </div>
+
           <div className="w-full hidden max-lg:block sticky top-0 z-50">
-            <AsideNav />
+            <AsideNav lenis={lenis} />
           </div>
+
           <Slides />
           <Overview />
           <Highlights />
-          <ImageC img="/images/headset-white-explode-view.jpg" />
+          <ImageC
+            img="/images/headset-white-explode-view.jpg"
+            className="size-full object-cover rounded-[1rem]"
+          />
           <PremiumXP />
           <Specs />
-          <ImageC img="/images/headset-black-explode-view.jpg" />
+          <ImageC
+            img="/images/headset-black.jpg"
+            className="w-full h-[75vh] object-cover rounded-[1rem]"
+          />
         </div>
       </div>
     </section>

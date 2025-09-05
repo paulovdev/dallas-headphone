@@ -70,13 +70,13 @@ const overlayAnim = {
 };
 
 const navLinks = [
-  { href: "", label: "Dallas®" },
+  { href: "#hero", label: "Dallas®" },
   { href: "#sobre", label: "Sobre" },
-  { href: "#reserve", label: "Reserve agora" },
+  { href: "Reserve agora", label: "Reserve agora" },
   { href: "#footer", label: "Contato" },
 ];
 
-const Menu = ({ menu, setMenu, reserveOpen }) => {
+const Menu = ({ menu, setMenu, reserveOpen, lenis }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -85,6 +85,21 @@ const Menu = ({ menu, setMenu, reserveOpen }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleLinkClick = (nav) => {
+    if (nav === "Reserve agora") {
+      reserveOpen();
+      setMenu(false);
+    }
+    if (!nav || !lenis?.current) return;
+    lenis.current.scrollTo(nav, {
+      offset: 0,
+      duration: 0.75,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    });
+
+    setMenu(false);
+  };
 
   return (
     <>
@@ -96,19 +111,9 @@ const Menu = ({ menu, setMenu, reserveOpen }) => {
         >
           <div className="mt-20 px-10 flex flex-col items-start gap-4 max-lg:mt-12 max-lg:px-6">
             {navLinks.map((nav, i) => (
-              <a
+              <div
                 key={i}
-                href={nav.href}
                 className="relative w-fit h-fit overflow-hidden pointer-events-auto group"
-                onClick={(e) => {
-                  if (nav.label === "Reserve agora") {
-                    e.preventDefault();
-                    reserveOpen();
-                    setMenu(false);
-                  } else {
-                    setMenu(false);
-                  }
-                }}
               >
                 <motion.p
                   custom={i}
@@ -116,12 +121,13 @@ const Menu = ({ menu, setMenu, reserveOpen }) => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
+                  onClick={() => handleLinkClick(nav.href)}
                   className="text-p font-neue-regular text-[62px] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[52px] max-md:text-[48px]"
                 >
                   {nav.label}
                 </motion.p>
                 <div className="absolute bottom-0 bg-p w-0 h-[3px] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </div>
             ))}
           </div>
         </motion.div>

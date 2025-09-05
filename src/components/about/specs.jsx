@@ -28,11 +28,74 @@ const specs = [
     title: "Embalagem",
     value: "100% feita de fibra proveniente de florestas sustentáveis",
   },
+  ////
+  { title: "Driver", value: "Dynamic 40 mm com imã de neodímio" },
+  { title: "Resposta de frequência", value: "20 Hz – 20 kHz" },
+  { title: "Impedância", value: "32 Ω" },
+  { title: "Sensibilidade", value: "98 dB ± 3 dB" },
+  {
+    title: "Cancelamento de ruído ativo (ANC)",
+    value: "Sim, ajustável em 3 níveis",
+  },
+  { title: "Modo ambiente", value: "Sim, para ouvir sons externos" },
+  { title: "Codec suportado", value: "SBC, AAC, aptX, aptX Adaptive" },
+  { title: "Microfone", value: "Duplo com cancelamento de ruído" },
+  {
+    title: "Conexão simultânea",
+    value: "Multi-device pairing (2 dispositivos ao mesmo tempo)",
+  },
+  { title: "Tempo de carregamento", value: "1,5 horas para carga completa" },
+  { title: "Autonomia em standby", value: "Até 60 dias" },
+  {
+    title: "Material das almofadas",
+    value: "Espuma de memória com couro sintético premium",
+  },
+  { title: "Arco de cabeça", value: "Ajustável, com reforço em aço" },
+  { title: "Dobrável", value: "Sim, para transporte fácil" },
+  { title: "Resistência à água", value: "IPX4 – respingos e suor" },
+  {
+    title: "Aplicativo compatível",
+    value: "Sim, para ajustes de equalização e firmware",
+  },
+  { title: "Equalizador", value: "Personalizável via app" },
+  { title: "Indicador de bateria", value: "LED + voz" },
+  { title: "Peso do cabo USB-C", value: "1,2 m removível" },
+  { title: "Cabo auxiliar", value: "Incluído, 1,2 m" },
+  { title: "Cores disponíveis", value: "Preto, Cinza, Azul" },
+  {
+    title: "Design eco-friendly",
+    value: "Materiais recicláveis e embalagem sustentável",
+  },
+  {
+    title: "Compatibilidade de assistentes de voz",
+    value: "Siri, Google Assistant, Alexa",
+  },
+  { title: "Modo gaming", value: "Baixa latência (<40ms)" },
+  { title: "Cancelamento de eco", value: "Sim, para chamadas nítidas" },
+  { title: "Botões programáveis", value: "Sim, pelo app" },
+  {
+    title: "Função de pausa automática",
+    value: "Ao remover o headphone dos ouvidos",
+  },
+  { title: "Função de localização", value: "Via app em caso de perda" },
+  { title: "Garantia", value: "2 anos" },
+  { title: "Certificação", value: "RoHS, CE, FCC" },
+  { title: "Temperatura de operação", value: "-10°C a 45°C" },
+  { title: "Armazenamento recomendado", value: "-20°C a 60°C" },
+  { title: "Compatível com PC, Mac, iOS e Android", value: "Sim" },
+  { title: "Suporte de firmware OTA", value: "Sim, atualizações automáticas" },
+  { title: "Vibração para notificações", value: "Opcional via app" },
+  { title: "Música offline", value: "Sim, via armazenamento interno opcional" },
+  {
+    title: "Tecnologia de resfriamento das orelhas",
+    value: "Sim, para longas sessões",
+  },
+  { title: "Personalização de luzes LED", value: "Sim, via app" },
 ];
 
 const Specs = () => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     triggerOnce: true,
   });
 

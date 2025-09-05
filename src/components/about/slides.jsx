@@ -86,7 +86,7 @@ const Slides = () => {
             }}
           >
             <motion.div
-              className="bg-s w-30 h-30 rounded-full flex items-center justify-center gap-2"
+              className="bg-s w-40 h-40 rounded-full flex items-center justify-center gap-2"
               {...textSlideAnim}
             >
               <p className="text-p font-neue-medium text-[16px] leading-[1.2em]">

@@ -4,14 +4,15 @@ import { textSlideAnim } from "../anim/anim";
 
 const footerLinks = {
   site: [
-    { label: "Sobre", href: "#sobre" },
+    { label: "Início", href: "#hero", onClick: false },
+    { label: "Sobre", href: "#sobre", onClick: false },
     { label: "Reserve já o seu!", href: null, onClick: true },
   ],
   product: [
-    { label: "Visão geral", href: "#visao-geral" },
-    { label: "Destaques", href: "#destaques" },
-    { label: "Experiência Premium", href: "#experiencia-premium" },
-    { label: "Especificações", href: "#especificacoes" },
+    { href: "#visao-geral", label: "Visão geral" },
+    { href: "#destaques", label: "Destaques" },
+    { href: "#experiencia-premium", label: "Experiência Premium" },
+    { href: "#especificacoes", label: "Especificações" },
   ],
   socials: [
     { label: "Instagram", href: "" },
@@ -20,11 +21,21 @@ const footerLinks = {
     { label: "Amazon", href: "" },
   ],
 };
-const Footer = ({ onClick }) => {
+
+const Footer = ({ onClick, lenis }) => {
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
+
+  const handleLinkClick = (target) => {
+    if (!target || !lenis?.current) return;
+    lenis.current.scrollTo(target, {
+      offset: 0,
+      duration: 0.75,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    });
+  };
 
   return (
     <footer
@@ -47,42 +58,26 @@ const Footer = ({ onClick }) => {
                 </motion.p>
               </div>
 
-              {footerLinks.site.map((item, i) =>
-                item.onClick ? (
-                  <div
-                    key={i}
-                    className="relative mb-4 h-fit overflow-hidden group"
-                    onClick={onClick}
+              {footerLinks.site.map((item, i) => (
+                <div
+                  key={i}
+                  className="relative mb-4 h-fit overflow-hidden group"
+                >
+                  <motion.p
+                    className="text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
+                    variants={textSlideAnim}
+                    initial="initial"
+                    animate={inView ? "animate" : ""}
+                    custom={i}
+                    onClick={() =>
+                      item.onClick ? onClick?.() : handleLinkClick(item.href)
+                    }
                   >
-                    <motion.p
-                      className=" text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
-                      variants={textSlideAnim}
-                      initial="initial"
-                      animate={inView ? "animate" : ""}
-                      custom={i}
-                    >
-                      <a href={item.href}>{item.label}</a>
-                    </motion.p>
-                    <div className="absolute bottom-0 bg-s w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
-                  </div>
-                ) : (
-                  <div
-                    key={i}
-                    className="relative mb-4 h-fit overflow-hidden group"
-                  >
-                    <motion.p
-                      className="text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
-                      variants={textSlideAnim}
-                      initial="initial"
-                      animate={inView ? "animate" : ""}
-                      custom={i}
-                    >
-                      <a href={item.href}>{item.label}</a>
-                    </motion.p>
-                    <div className="absolute bottom-0 bg-s w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
-                  </div>
-                )
-              )}
+                    {item.label}
+                  </motion.p>
+                  <div className="absolute bottom-0 bg-s w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
+                </div>
+              ))}
             </div>
 
             <div className="flex-[2] flex flex-col items-start justify-start  max-lg:flex-none">
@@ -103,14 +98,14 @@ const Footer = ({ onClick }) => {
                   className="relative mb-4 h-fit overflow-hidden group"
                 >
                   <motion.p
-                    key={i}
                     className="text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
                     variants={textSlideAnim}
                     initial="initial"
                     animate={inView ? "animate" : ""}
                     custom={i}
+                    onClick={() => handleLinkClick(item.href)}
                   >
-                    <a href={item.href}>{item.label}</a>
+                    {item.label}
                   </motion.p>
                   <div className="absolute bottom-0 bg-s w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
                 </div>
@@ -126,7 +121,6 @@ const Footer = ({ onClick }) => {
                   className="relative mb-4 h-fit overflow-hidden group"
                 >
                   <motion.p
-                    key={i}
                     className=" text-s font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[42px]"
                     variants={textSlideAnim}
                     initial="initial"

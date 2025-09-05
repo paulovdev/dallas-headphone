@@ -12,24 +12,19 @@ const clipAnim = {
     },
   },
 };
-const ImageC = ({ img }) => {
+const ImageC = ({ img, className }) => {
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
   return (
-    <div className="w-full pt-40 pr-10 max-lg:px-5 max-lg:pt-20" ref={ref}>
+    <div className="w-full pt-20 pr-10 max-lg:px-5 max-lg:pt-20" ref={ref}>
       <motion.figure
         className="size-full"
         variants={clipAnim}
         animate={inView ? "animate" : "initial"}
       >
-        <Image
-          src={img}
-          width={2000}
-          height={2000}
-          className="size-full object-cover rounded-[1rem]"
-        />
+        <Image src={img} width={2000} height={2000} className={className} />
       </motion.figure>
     </div>
   );
