@@ -7,19 +7,25 @@ import PremiumXP from "./about/premium-xp";
 import { textSlideAnim } from "../anim/anim";
 import { useInView } from "react-intersection-observer";
 import Slides from "./about/slides";
+import Button from "./button";
 
 const asideLinks = [
-  { label: "Visão geral", href: "#visao-geral" },
-  { label: "Destaques", href: "#destaques" },
-  { label: "Experiência Premium", href: "#experiencia-premium" },
-  { label: "Especificações", href: "#especificacoes" },
+  { label: "Overview", href: "#overview" },
+  { label: "Highlights", href: "#highlights" },
+  { label: "Premium Experience", href: "#premium-xp" },
+  { label: "Specs", href: "#specs" },
 ];
 
 const paragraphs = [
-  "Eleve sua experiência com o Dallas®. Design premium, tecnologia",
-  "de ponta e áudio de alta definição em um só produto.",
-  "Cancelamento de ruído inteligente, bateria de longa duração e",
-  "materiais de alta qualidade para máximo conforto.",
+  "Elevate your experience with Dallas®. Premium design,",
+  "cutting-edge technology, and high-definition audio",
+  "one product. Intelligent noise cancellation, in long-lasting",
+  "battery life, and, high-quality materials for maximum ",
+  "comfort.",
+];
+const subPhrase = [
+  "Get yours now and discover a new standard of sound,",
+  "practicality, and style.",
 ];
 
 const AsideNav = ({ lenis }) => {
@@ -42,7 +48,7 @@ const AsideNav = ({ lenis }) => {
           <button
             key={i}
             onClick={() => handleLinkClick(link.href)}
-            className="relative mb-2 text-p text-[16px] font-neue-regular text-start leading-[1] group cursor-pointer"
+            className="relative mb-2 text-p text-[1rem] font-neue-regular text-start leading-[1] group cursor-pointer"
           >
             {link.label}
             <div className="absolute bottom-0 bg-p w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
@@ -55,7 +61,7 @@ const AsideNav = ({ lenis }) => {
           <div key={i} className="w-fit">
             <button
               onClick={() => handleLinkClick(link.href)}
-              className="relative mb-2 text-p text-[16px] font-neue-regular text-start leading-[1] group cursor-pointer"
+              className="relative mb-2 text-p text-[1rem] font-neue-regular text-start leading-[1] group cursor-pointer"
             >
               {link.label}
               <div className="absolute bottom-0 bg-p w-0 h-[1px] transition-all duration-300 group-hover:w-full" />
@@ -78,22 +84,12 @@ const About = ({ onClick, lenis }) => {
       <div className="px-10 max-lg:px-5">
         <div className="w-full h-fit overflow-hidden">
           <motion.h1
-            className="text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+            className="text-p font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
             variants={textSlideAnim}
             initial="initial"
             animate={inView ? "animate" : ""}
           >
-            Reserve o seu <span className="text-t">Dallas®</span> agora
-          </motion.h1>
-        </div>
-        <div className="w-full h-fit overflow-hidden max-lg:mb-8">
-          <motion.h1
-            className=" text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
-            variants={textSlideAnim}
-            initial="initial"
-            animate={inView ? "animate" : ""}
-          >
-            mesmo!
+            Book your <span className="text-t">Dallas®</span> now!
           </motion.h1>
         </div>
       </div>
@@ -103,11 +99,11 @@ const About = ({ onClick, lenis }) => {
         </div>
 
         <div className="flex-[3] pt-20 size-full flex flex-col items-end">
-          <div className="relative px-10 flex flex-col items-start max-lg:mb-12 max-lg:px-5">
+          <div className="relative max-w-[600px] w-full  px-10 flex flex-col items-start max-lg:mb-12 max-lg:px-5">
             {paragraphs.map((paragraph, i) => (
               <div className="h-fit overflow-hidden" key={i}>
                 <motion.p
-                  className="text-p font-neue-regular text-[20px] leading-[1.2em] tracking-[-0.01em]"
+                  className="text-p font-neue-regular text-[1.25rem] leading-[1.2em] tracking-[-0.01em]"
                   variants={textSlideAnim}
                   initial="initial"
                   animate={inView ? "animate" : ""}
@@ -121,29 +117,31 @@ const About = ({ onClick, lenis }) => {
             <br />
 
             <div className="h-fit overflow-hidden">
-              <motion.p
-                className="text-p font-neue-regular text-[20px] leading-[1.2em] tracking-[-0.01em]"
-                variants={textSlideAnim}
-                initial="initial"
-                animate={inView ? "animate2" : ""}
-              >
-                Garanta já o seu e descubra um novo padrão de som, praticidade e
-                estilo.
-              </motion.p>
+              {subPhrase.map((phrase, i) => (
+                <div className="h-fit overflow-hidden" key={i}>
+                  <motion.p
+                    className="text-p font-neue-regular text-[1.25rem] leading-[1.2em] tracking-[-0.01em]"
+                    variants={textSlideAnim}
+                    initial="initial"
+                    animate={inView ? "animate" : ""}
+                    custom={i}
+                  >
+                    {phrase}
+                  </motion.p>
+                </div>
+              ))}
             </div>
 
-            <p className="mb-18 text-p font-neue-regular text-[20px] leading-[1.2em] tracking-[-0.01em]"></p>
+            <p className="mb-18 text-p font-neue-regular text-[1.25rem] leading-[1.2em] tracking-[-0.01em]"></p>
 
-            <button
-              className="w-[200px] h-[45px] 
-                text-s text-[16px] font-neue-medium
-                bg-p rounded-full 
-                flex items-center justify-center
-               hover:bg-p/75 transition-all duration-300 cursor-pointer"
+            <Button
+              text="Book"
+              inBgColor="bg-p"
+              outBgColor="bg-t"
+              inTextColor="text-s"
+              outTextColor="text-s"
               onClick={onClick}
-            >
-              Reservar
-            </button>
+            />
           </div>
 
           <div className="w-full hidden max-lg:block sticky top-0 z-50">

@@ -3,94 +3,96 @@ import { motion } from "framer-motion";
 import { textSlideAnim } from "../../anim/anim";
 
 const specs = [
-  { title: "Altura", value: "18,1 cm" },
-  { title: "Comprimento", value: "17,8 cm" },
-  { title: "Largura", value: "7,8 cm" },
-  { title: "Peso", value: "260g" },
-  { title: "Formato", value: "over ear (em cima do ouvido)" },
-  { title: "Portas", value: "Bluetooth, Sem fio" },
-  { title: "Compatibilidade com Bluetooth", value: "Bluetooth 5.3" },
-  { title: "Fonte de energia", value: "Bateria" },
-  { title: "Baterias", value: "Íon de lítio recarregáveis" },
-  { title: "Conectividade", value: "Bluetooth® Class 1" },
-  { title: "Áudio", value: "USB-C" },
-  { title: "Entrada analógica", value: "3,5 mm para fontes de áudio com cabo" },
-  { title: "Bateria Dallas® (uma recarga)", value: "Até 40 horas de som" },
-  { title: "Fast Fuel", value: "10 minutos = até 4 horas de som" },
-  { title: "Controles no fone", value: "Botão “b” para músicas e chamadas" },
-  { title: "Controle de volume", value: "Integrado" },
+  { title: "Height", value: "18.1 cm" },
+  { title: "Length", value: "17.8 cm" },
+  { title: "Width", value: "7.8 cm" },
+  { title: "Weight", value: "260g" },
+  { title: "Form Factor", value: "Over-ear (covers the ear)" },
+  { title: "Ports", value: "Bluetooth, Wireless" },
+  { title: "Bluetooth Compatibility", value: "Bluetooth 5.3" },
+  { title: "Power Source", value: "Battery" },
+  { title: "Batteries", value: "Rechargeable lithium-ion" },
+  { title: "Connectivity", value: "Bluetooth® Class 1" },
+  { title: "Audio", value: "USB-C" },
+  { title: "Analog Input", value: "3.5 mm for wired audio sources" },
   {
-    title: "Botão multifunção",
-    value:
-      "Alternar entre modos de áudio, Equalização Adaptativa, ligar e emparelhar",
+    title: "Battery Life (single charge)",
+    value: "Up to 40 hours of playback",
+  },
+  { title: "Fast Fuel", value: "10 minutes = up to 4 hours of playback" },
+  { title: "On-Ear Controls", value: "“b” button for music and calls" },
+  { title: "Volume Control", value: "Integrated" },
+  {
+    title: "Multi-Function Button",
+    value: "Switch between audio modes, Adaptive EQ, power on/off, and pairing",
   },
   {
-    title: "Embalagem",
-    value: "100% feita de fibra proveniente de florestas sustentáveis",
+    title: "Packaging",
+    value: "100% made from sustainably sourced fiber",
   },
   ////
-  { title: "Driver", value: "Dynamic 40 mm com imã de neodímio" },
-  { title: "Resposta de frequência", value: "20 Hz – 20 kHz" },
-  { title: "Impedância", value: "32 Ω" },
-  { title: "Sensibilidade", value: "98 dB ± 3 dB" },
+  { title: "Driver", value: "Dynamic 40 mm with neodymium magnet" },
+  { title: "Frequency Response", value: "20 Hz – 20 kHz" },
+  { title: "Impedance", value: "32 Ω" },
+  { title: "Sensitivity", value: "98 dB ± 3 dB" },
   {
-    title: "Cancelamento de ruído ativo (ANC)",
-    value: "Sim, ajustável em 3 níveis",
+    title: "Active Noise Cancellation (ANC)",
+    value: "Yes, adjustable with 3 levels",
   },
-  { title: "Modo ambiente", value: "Sim, para ouvir sons externos" },
-  { title: "Codec suportado", value: "SBC, AAC, aptX, aptX Adaptive" },
-  { title: "Microfone", value: "Duplo com cancelamento de ruído" },
+  { title: "Transparency Mode", value: "Yes, for hearing external sounds" },
+  { title: "Supported Codecs", value: "SBC, AAC, aptX, aptX Adaptive" },
+  { title: "Microphone", value: "Dual mic with noise cancellation" },
   {
-    title: "Conexão simultânea",
-    value: "Multi-device pairing (2 dispositivos ao mesmo tempo)",
+    title: "Simultaneous Connection",
+    value: "Multi-device pairing (2 devices at once)",
   },
-  { title: "Tempo de carregamento", value: "1,5 horas para carga completa" },
-  { title: "Autonomia em standby", value: "Até 60 dias" },
+  { title: "Charging Time", value: "1.5 hours for a full charge" },
+  { title: "Standby Time", value: "Up to 60 days" },
   {
-    title: "Material das almofadas",
-    value: "Espuma de memória com couro sintético premium",
+    title: "Ear Cushion Material",
+    value: "Memory foam with premium synthetic leather",
   },
-  { title: "Arco de cabeça", value: "Ajustável, com reforço em aço" },
-  { title: "Dobrável", value: "Sim, para transporte fácil" },
-  { title: "Resistência à água", value: "IPX4 – respingos e suor" },
+  { title: "Headband", value: "Adjustable, reinforced with steel" },
+  { title: "Foldable", value: "Yes, for easy portability" },
+  { title: "Water Resistance", value: "IPX4 – splash and sweat resistant" },
   {
-    title: "Aplicativo compatível",
-    value: "Sim, para ajustes de equalização e firmware",
+    title: "Compatible App",
+    value: "Yes, for EQ adjustments and firmware updates",
   },
-  { title: "Equalizador", value: "Personalizável via app" },
-  { title: "Indicador de bateria", value: "LED + voz" },
-  { title: "Peso do cabo USB-C", value: "1,2 m removível" },
-  { title: "Cabo auxiliar", value: "Incluído, 1,2 m" },
-  { title: "Cores disponíveis", value: "Preto, Cinza, Azul" },
+  { title: "Equalizer", value: "Customizable via app" },
+  { title: "Battery Indicator", value: "LED + voice prompts" },
+  { title: "USB-C Cable Length", value: "1.2 m, detachable" },
+  { title: "Auxiliary Cable", value: "Included, 1.2 m" },
+  { title: "Available Colors", value: "Black, Gray, Blue" },
   {
-    title: "Design eco-friendly",
-    value: "Materiais recicláveis e embalagem sustentável",
+    title: "Eco-Friendly Design",
+    value: "Recyclable materials and sustainable packaging",
   },
   {
-    title: "Compatibilidade de assistentes de voz",
+    title: "Voice Assistant Compatibility",
     value: "Siri, Google Assistant, Alexa",
   },
-  { title: "Modo gaming", value: "Baixa latência (<40ms)" },
-  { title: "Cancelamento de eco", value: "Sim, para chamadas nítidas" },
-  { title: "Botões programáveis", value: "Sim, pelo app" },
+  { title: "Gaming Mode", value: "Low latency (<40ms)" },
+  { title: "Echo Cancellation", value: "Yes, for clear calls" },
+  { title: "Programmable Buttons", value: "Yes, customizable via app" },
   {
-    title: "Função de pausa automática",
-    value: "Ao remover o headphone dos ouvidos",
+    title: "Auto-Pause Function",
+    value: "Automatically pauses when removing headphones",
   },
-  { title: "Função de localização", value: "Via app em caso de perda" },
-  { title: "Garantia", value: "2 anos" },
-  { title: "Certificação", value: "RoHS, CE, FCC" },
-  { title: "Temperatura de operação", value: "-10°C a 45°C" },
-  { title: "Armazenamento recomendado", value: "-20°C a 60°C" },
-  { title: "Compatível com PC, Mac, iOS e Android", value: "Sim" },
-  { title: "Suporte de firmware OTA", value: "Sim, atualizações automáticas" },
-  { title: "Vibração para notificações", value: "Opcional via app" },
-  { title: "Música offline", value: "Sim, via armazenamento interno opcional" },
+  { title: "Find My Device", value: "Trackable via app in case of loss" },
+  { title: "Warranty", value: "2 years" },
+  { title: "Certifications", value: "RoHS, CE, FCC" },
+  { title: "Operating Temperature", value: "-10°C to 45°C" },
+  { title: "Recommended Storage", value: "-20°C to 60°C" },
+  { title: "PC, Mac, iOS & Android Compatible", value: "Yes" },
+  { title: "OTA Firmware Support", value: "Yes, automatic updates" },
+  { title: "Vibration Alerts", value: "Optional via app" },
+  { title: "Offline Music", value: "Yes, via optional internal storage" },
   {
-    title: "Tecnologia de resfriamento das orelhas",
-    value: "Sim, para longas sessões",
+    title: "Ear Cooling Technology",
+    value: "Yes, for long listening sessions",
   },
-  { title: "Personalização de luzes LED", value: "Sim, via app" },
+  { title: "LED Light Customization", value: "Yes, via app" },
 ];
 
 const Specs = () => {
@@ -102,18 +104,18 @@ const Specs = () => {
   return (
     <section
       className="pt-40 size-full flex items-start max-lg:flex-col max-lg:px-5 max-lg:pt-20"
-      id="especificacoes"
+      id="specs"
       ref={ref}
     >
       <div className="w-full">
         <div className="mb-10 w-full h-fit overflow-hidden">
           <motion.h1
-            className="text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+            className="text-p font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
             variants={textSlideAnim}
             initial="initial"
             animate={inView ? "animate2" : ""}
           >
-            Especificações
+            Specs
           </motion.h1>
         </div>
 
@@ -127,11 +129,11 @@ const Specs = () => {
                 animate={inView ? "animate" : ""}
                 custom={i}
               >
-                <p className="text-p/75 font-neue-regular text-[16px] leading-[1.2] ">
+                <p className="text-p/75 font-neue-regular text-[1rem] leading-[1.2] ">
                   {spec.title}
                 </p>
 
-                <p className="max-w-[400px] text-p font-neue-regular text-[16px] leading-[1.2] text-end">
+                <p className="max-w-[400px] text-p font-neue-regular text-[1rem] leading-[1.2] text-end">
                   {spec.value}
                 </p>
               </motion.div>

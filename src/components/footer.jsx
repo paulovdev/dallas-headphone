@@ -4,15 +4,15 @@ import { textSlideAnim } from "../anim/anim";
 
 const footerLinks = {
   site: [
-    { label: "Início", href: "#hero", onClick: false },
-    { label: "Sobre", href: "#sobre", onClick: false },
-    { label: "Reserve já o seu!", href: null, onClick: true },
+    { label: "Home", href: "#hero", onClick: false },
+    { label: "About", href: "#about", onClick: false },
+    { label: "Books yours now!", href: null, onClick: true },
   ],
   product: [
-    { href: "#visao-geral", label: "Visão geral" },
-    { href: "#destaques", label: "Destaques" },
-    { href: "#experiencia-premium", label: "Experiência Premium" },
-    { href: "#especificacoes", label: "Especificações" },
+    { href: "#overview", label: "Overview" },
+    { href: "#highlights", label: "Highlights" },
+    { href: "#premium-xp", label: "Premium Experience" },
+    { href: "#specs", label: "Specs" },
   ],
   socials: [
     { label: "Instagram", href: "" },
@@ -49,12 +49,12 @@ const Footer = ({ onClick, lenis }) => {
             <div className="flex-[1] flex flex-col items-start justify-start max-lg:mb-8">
               <div className="mb-8 h-fit overflow-hidden">
                 <motion.p
-                  className="text-s/75 font-neue-regular text-[20px] leading-[1] tracking-[-0.01em]"
+                  className="text-s/75 font-neue-regular text-[1.25rem] leading-[1] tracking-[-0.01em]"
                   variants={textSlideAnim}
                   initial="initial"
                   animate={inView ? "animate2" : ""}
                 >
-                  Navegue pelo site:
+                  Navigate on the website:
                 </motion.p>
               </div>
 
@@ -64,7 +64,7 @@ const Footer = ({ onClick, lenis }) => {
                   className="relative mb-4 h-fit overflow-hidden group"
                 >
                   <motion.p
-                    className="text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
+                    className="text-s font-neue-regular text-[1.25rem] leading-[1] tracking-[-0.01em] cursor-pointer"
                     variants={textSlideAnim}
                     initial="initial"
                     animate={inView ? "animate" : ""}
@@ -83,12 +83,12 @@ const Footer = ({ onClick, lenis }) => {
             <div className="flex-[2] flex flex-col items-start justify-start  max-lg:flex-none">
               <div className="mb-8 h-fit overflow-hidden">
                 <motion.p
-                  className="text-s/75 font-neue-regular text-[20px] leading-[1] tracking-[-0.01em]"
+                  className="text-s/75 font-neue-regular text-[1.25rem] leading-[1] tracking-[-0.01em]"
                   variants={textSlideAnim}
                   initial="initial"
                   animate={inView ? "animate2" : ""}
                 >
-                  Navegue pelo produto:
+                  Navigate on the product:
                 </motion.p>
               </div>
 
@@ -98,7 +98,7 @@ const Footer = ({ onClick, lenis }) => {
                   className="relative mb-4 h-fit overflow-hidden group"
                 >
                   <motion.p
-                    className="text-s font-neue-regular text-[20px] leading-[1] tracking-[-0.01em] cursor-pointer"
+                    className="text-s font-neue-regular text-[1.25rem] leading-[1] tracking-[-0.01em] cursor-pointer"
                     variants={textSlideAnim}
                     initial="initial"
                     animate={inView ? "animate" : ""}
@@ -121,7 +121,7 @@ const Footer = ({ onClick, lenis }) => {
                   className="relative mb-4 h-fit overflow-hidden group"
                 >
                   <motion.p
-                    className=" text-s font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[42px]"
+                    className=" text-s font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[2.625rem]"
                     variants={textSlideAnim}
                     initial="initial"
                     animate={inView ? "animate" : ""}
@@ -140,11 +140,11 @@ const Footer = ({ onClick, lenis }) => {
 
         <div className="size-full flex items-end justify-end ">
           <div className="w-full flex items-center justify-between max-lg:flex-col max-lg:items-start">
-            <h2 className="text-s font-neue-regular text-[64px] leading-[1] tracking-[-0.03em] max-lg:text-[42px] max-lg:mb-2">
+            <h2 className="text-s font-neue-regular text-[4rem] leading-[1] tracking-[-0.03em] max-lg:text-[2.625rem] max-lg:mb-2">
               © {new Date().getFullYear()} Dallas®
             </h2>
-            <p className="text-s/75 font-neue-regular text-[16px]">
-              Todos os direitos reservados
+            <p className="text-s/75 font-neue-regular text-[1rem]">
+              All rights reserved
             </p>
           </div>
         </div>

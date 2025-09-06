@@ -59,6 +59,10 @@ body {
 
   font-family: "Neue Montreal", sans-serif;
 }
+body.loading {
+  overflow: hidden;
+  cursor: wait;
+}
 
 ::-webkit-scrollbar {
   display: none;

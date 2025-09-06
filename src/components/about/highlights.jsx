@@ -25,35 +25,34 @@ const textSlideAnim = {
 
 const highlights = [
   {
-    icon: <FiHeadphones className="text-[28px] text-t" />,
+    icon: <FiHeadphones className="text-[1.75rem] text-t" />,
     descriptions: [
-      "A plataforma acústica personalizada do fone de ouvido",
-      "Dallas® cria uma experiência de som envolvente.",
-      "Cada driver exclusivo de 40 mm foi projetado para fornecer",
-      "a maior nitidez.",
+      "The custom Dallas® acoustic platform delivers an immersive",
+      "sound experience designed for pure audio enjoyment.",
+      "Each exclusive 40mm driver is engineered to provide",
+      "exceptional clarity and precision.",
     ],
   },
   {
-    icon: <MdBattery5Bar className="text-[28px] text-t" />,
+    icon: <MdBattery5Bar className="text-[1.75rem] text-t" />,
     descriptions: [
-      "Para diversão de longa duração, ouça sem fio por até 57 horas",
-      "e recarregue a bateria em apenas 2 horas, com o conveniente",
-      "cabo USB Tipo C. Uma carga rápida de 5 minutos proporciona",
-      "3 horas adicionais de música.",
+      "Enjoy up to 25 hours of wireless playback for nonstop fun.",
+      "Recharge in just 2 hours with the convenient USB Type-C cable.",
+      "A quick 10-minute charge gives you an extra 1 hour of music.",
     ],
   },
   {
-    icon: <FiBluetooth className="text-[28px] text-t" />,
+    icon: <FiBluetooth className="text-[1.75rem] text-t" />,
     descriptions: [
-      "Conectividade Bluetooth de alta performance.",
-      "Latência mínima para jogos e vídeos.",
+      "High-performance Bluetooth connectivity for a seamless experience.",
+      "Ultra-low latency, perfect for gaming and videos.",
     ],
   },
   {
-    icon: <FiSettings className="text-[28px] text-t" />,
+    icon: <FiSettings className="text-[1.75rem] text-t" />,
     descriptions: [
-      "Controles intuitivos integrados ao headset. Compatível ",
-      "com múltiplos dispositivos simultaneamente.",
+      "Intuitive on-headset controls designed for simplicity.",
+      "Easily connect and manage multiple devices simultaneously.",
     ],
   },
 ];
@@ -67,18 +66,18 @@ const Highlights = () => {
   return (
     <section
       className="pt-40 size-full flex items-start gap-12 max-lg:flex-col max-lg:px-5 max-lg:pt-20"
-      id="destaques"
+      id="highlights"
       ref={ref}
     >
       <div className="w-full">
         <div className="mb-10 w-full h-fit overflow-hidden">
           <motion.h1
-            className="text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+            className="text-p font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
             variants={textSlideAnim}
             initial="initial"
             animate={inView ? "animate2" : ""}
           >
-            Destaques
+            Highlights
           </motion.h1>
         </div>
 
@@ -88,10 +87,10 @@ const Highlights = () => {
               <motion.div
                 className="mb-8 flex items-center gap-2"
                 variants={textSlideAnim}
-                initial={{ filter: "blur(10px)" }}
+                initial={{ filter: "blur(16px)" }}
                 animate={{
-                  filter: inView ? "blur(0px)" : "blur(10px)",
-                  transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
+                  filter: inView ? "blur(0px)" : "blur(16px)",
+                  transition: { duration: 1, ease: [0.33, 1, 0.68, 1] },
                 }}
                 custom={i}
               >
@@ -102,7 +101,7 @@ const Highlights = () => {
                 {highlight.descriptions.map((line, idx) => (
                   <div className="w-full h-fit overflow-hidden" key={idx}>
                     <motion.p
-                      className="text-p/75 font-neue-regular text-[16px] leading-[1.2em]"
+                      className="text-p/75 font-neue-regular text-[1rem] leading-[1.2em]"
                       variants={textSlideAnim}
                       initial="initial"
                       animate={inView ? "animate" : ""}

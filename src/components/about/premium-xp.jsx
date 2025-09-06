@@ -7,34 +7,34 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 const premiumxp = [
   {
-    title: "Tecnologia sem fio Bluetooth 5.3",
+    title: "Bluetooth 5.3 Wireless Technology",
     descriptions: [
-      "Conectividade rápida e estável com qualquer dispositivo.",
-      "Baixa latência para uma experiência de áudio perfeita.",
-      "Mais eficiência energética para maior duração da bateria.",
+      "Fast and stable connectivity with any device.",
+      "Low latency for a seamless audio experience.",
+      "Improved power efficiency for longer battery life.",
     ],
   },
   {
-    title: "Plataforma Dallas® personalizada",
+    title: "Custom Dallas® Platform",
     descriptions: [
-      "Drivers de 40mm com engenharia de precisão para áudio premium.",
-      "Resposta de frequência otimizada para graves profundos.",
-      "Som cristalino e detalhado em qualquer volume.",
+      "40mm precision-engineered drivers for premium audio.",
+      "Optimized frequency response for deep, powerful bass.",
+      "Crystal-clear and detailed sound at any volume.",
     ],
   },
   {
-    title: "Cancelamento Ativo de Ruído",
+    title: "Active Noise Cancellation",
     descriptions: [
-      "Bloqueia até 95% dos ruídos externos para máxima imersão.",
-      "Perfeito para viagens, escritórios e ambientes barulhentos.",
-      "Ative ou desative facilmente com um único toque.",
+      "Blocks up to 95% of external noise for maximum immersion.",
+      "Perfect for travel, office work, and noisy environments.",
+      "Easily enable or disable with a single touch.",
     ],
   },
   {
-    title: "Seletor Analógico de Graves",
+    title: "Analog Bass Selector",
     descriptions: [
-      "Controle o nível de graves em tempo real com precisão.",
-      "Escolha entre modos suaves, balanceados ou potentes.",
+      "Precisely control bass levels in real time.",
+      "Choose between soft, balanced, or powerful bass modes.",
     ],
   },
 ];
@@ -87,18 +87,18 @@ const PremiumXP = () => {
   return (
     <section
       className="pt-40 size-full flex items-start gap-12 max-lg:flex-col max-lg:px-5 max-lg:pt-20"
-      id="experiencia-premium"
+      id="premium-xp"
       ref={ref}
     >
       <div className="w-full flex flex-col">
         <div className="mb-10 h-fit overflow-hidden">
           <motion.h1
-            className="text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px] "
+            className="text-p font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem] "
             variants={textSlideAnim}
             initial="initial"
             animate={inView ? "animate2" : ""}
           >
-            Experiência Premium
+            Premium Experience
           </motion.h1>
         </div>
 
@@ -131,10 +131,10 @@ const PremiumXP = () => {
                   animate={inView ? "animate" : ""}
                   custom={i}
                 >
-                  <span className="mb-2 w-full text-p font-neue-regular text-[24px] leading-[1.2em] flex items-center justify-between gap-3">
+                  <span className="mb-2 w-full text-p font-neue-regular text-[1.5rem] leading-[1.2em] flex items-center justify-between gap-3">
                     {premium.title}
                     <AiOutlinePlus
-                      className={`text-t text-[2rem] transition-transform duration-300 ${
+                      className={`text-t text-[1.5rem] transition-transform duration-300 ${
                         activeIndex === i ? "rotate-45" : "rotate-0"
                       }`}
                     />
@@ -158,7 +158,7 @@ const PremiumXP = () => {
                             variants={textSlideAnim}
                             initial="initial"
                             animate="animate"
-                            className="text-p/75 font-neue-regular text-[16px] leading-[1.3]"
+                            className="text-p/75 font-neue-regular text-[1rem] leading-[1.3]"
                           >
                             {desc}
                           </motion.p>
@@ -170,14 +170,14 @@ const PremiumXP = () => {
               </div>
             ))}
             <div className="absolute bottom-0">
-              <p className="text-p font-neue-regular text-[16px] leading-[1.2em] max-lg:hidden">
-                Gostou? Pode reservar{" "}
+              <p className="text-p font-neue-regular text-[1rem] leading-[1.2em] max-lg:hidden">
+                Liked it? You can reserve by{" "}
                 <a
                   href=""
                   target="_blank"
                   className="font-neue-medium text-t underline"
                 >
-                  clicando aqui.
+                  clicking here.
                 </a>
               </p>
             </div>

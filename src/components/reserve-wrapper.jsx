@@ -1,20 +1,23 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { textSlideAnim } from "../anim/anim";
+import Button from "./button";
 
 const ReserveWrapper = ({ onClick }) => {
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
-  const phrases = ["Ainda interessado?", " Reserve já o seu Dallas®"];
+
+  const phrases = ["Still interested?", " Book your Dallas® now"];
+
   return (
     <div className="py-50 h-fit bg-t max-lg:px-5 max-lg:py-20" ref={ref}>
-      <div className="relative max-w-[800px] mx-auto text-center flex flex-col items-center">
+      <div className="relative  max-w-[800px] mx-auto text-center flex flex-col items-center">
         {phrases.map((phrase, i) => (
           <div className="w-full h-fit overflow-hidden" key={i}>
             <motion.h2
-              className="text-s font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[42px]"
+              className="text-s font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[2.625rem]"
               variants={textSlideAnim}
               initial="initial"
               animate={inView ? "animate" : ""}
@@ -24,17 +27,16 @@ const ReserveWrapper = ({ onClick }) => {
             </motion.h2>
           </div>
         ))}
+        <div className="mb-12 "></div>
 
-        <button
-          className="mt-8 w-[200px] h-[45px] 
-                text-p text-[16px] font-neue-medium
-                bg-s rounded-full 
-                flex items-center justify-center
-               hover:bg-s/75 transition-all duration-300  cursor-pointer"
+        <Button
+          text="Book"
+          inBgColor="bg-s"
+          outBgColor="bg-p"
+          inTextColor="text-s"
+          outTextColor="text-p"
           onClick={onClick}
-        >
-          Reservar
-        </button>
+        />
       </div>
     </div>
   );

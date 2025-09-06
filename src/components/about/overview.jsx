@@ -1,40 +1,27 @@
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { textSlideAnim } from "../../anim/anim";
 
-const clipAnim = {
-  initial: { clipPath: "inset(100% 0% 0% 0%)" },
-  animate: {
-    clipPath: "inset(0% 0% 0% 0%)",
-    transition: {
-      duration: 0.5,
-      ease: [0.33, 1, 0.68, 1],
-      delay: 0.25,
-    },
-  },
-};
-
 const overview = [
   {
-    title: "Plataforma acústica Dallas® personalizada",
+    title: "Custom Dallas® Acoustic Platform",
     descriptions: [
-      "A plataforma acústica personalizada do fone de ouvido Dallas® cria uma experiência",
-      "de som envolvente. Cada driver exclusivo de 40 mm foi projetado para fornecer a maior",
-      "nitidez, com distorção praticamente nula, mesmo em volumes altos.",
+      "The custom Dallas® acoustic platform delivers an immersive sound experience.",
+      "Each exclusive 40mm driver is engineered to provide exceptional clarity",
+      "with virtually zero distortion, even at high volumes.",
       " ",
-      "Isso representa uma melhoria de até 80% em relação ao Dallas® e um aumento",
-      "na fidelidade do áudio. O processador digital integrado otimiza a resposta de",
-      "frequência final para produzir um perfil de som poderoso e equilibrado e ",
-      "destacar detalhes sutis em tudo o que você ouve.",
+      "This represents up to an 80% improvement over the previous Dallas® model,",
+      "enhancing overall audio fidelity. The integrated digital processor optimizes",
+      "the final frequency response to deliver a powerful, well-balanced sound profile",
+      "while highlighting subtle details in everything you listen to.",
     ],
   },
   {
-    title: "Cancelamento Ativo de Ruído e modo Ambiente",
+    title: "Active Noise Cancellation & Transparency Mode",
     descriptions: [
-      "O Dallas® usa tecnologia avançada para eliminar ruídos externos e criar uma",
-      "experiência auditiva imersiva. Você pode alternar para o modo Ambiente para",
-      "ouvir sons ao seu redor sem tirar os fones.",
+      "Dallas® uses advanced technology to eliminate external noise,",
+      "creating an immersive listening experience. You can switch to",
+      "Transparency Mode to hear your surroundings without removing your headphones.",
     ],
   },
 ];
@@ -48,18 +35,18 @@ const Overview = () => {
   return (
     <section
       className="pt-20 size-full flex items-start gap-12 max-lg:flex-col max-lg:px-5"
-      id="visao-geral"
+      id="overview"
       ref={ref}
     >
       <div className="flex-[2] max-w-[600px] w-full">
         <div className="mb-10 w-full h-fit overflow-hidden">
           <motion.h1
-            className="text-p font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+            className="text-p font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
             variants={textSlideAnim}
             initial="initial"
             animate={inView ? "animate2" : ""}
           >
-            Visão Geral
+            Overview
           </motion.h1>
         </div>
 
@@ -67,7 +54,7 @@ const Overview = () => {
           <div key={i} className="mb-8">
             <div className="mb-2 w-full h-fit overflow-hidden">
               <motion.h3
-                className="text-p font-neue-regular text-[24px] leading-[1.2em] "
+                className="text-p font-neue-regular text-[1.5rem] leading-[1.2em] "
                 variants={textSlideAnim}
                 initial="initial"
                 animate={inView ? "animate" : ""}
@@ -82,7 +69,7 @@ const Overview = () => {
                   <div className="w-full h-fit overflow-hidden">
                     <motion.p
                       key={i}
-                      className="text-p/75 font-neue-regular text-[16px] leading-[1.2em]"
+                      className="text-p/75 font-neue-regular text-[1rem] leading-[1.2em]"
                       variants={textSlideAnim}
                       initial="initial"
                       animate={inView ? "animate" : ""}

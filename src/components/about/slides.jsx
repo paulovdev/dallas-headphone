@@ -1,4 +1,3 @@
-import { textSlideAnim } from "@/anim/anim";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -16,7 +15,24 @@ const clipAnim = {
     },
   }),
 };
-
+export const textSlideAnim = {
+  initial: { y: "100%" },
+  animate: {
+    y: "0",
+    transition: {
+      duration: 0.75,
+      ease: [0.33, 1, 0.68, 1],
+      delay: 0.15,
+    },
+  },
+  exit: {
+    y: "-100%",
+    transition: {
+      duration: 0.75,
+      ease: [0.33, 1, 0.68, 1],
+    },
+  },
+};
 const slides = [
   "/images/headset-slide-5.jpg",
   "/images/headset-slide-2.jpg",
@@ -38,14 +54,14 @@ const Slides = () => {
     <>
       <div className="size-full pt-20" ref={ref}>
         <div
-          className="flex items-start overflow-x-auto scrollbar-none snap-x snap-mandatory"
+          className="max-lg:pl-4 pr-4  flex items-start gap-4 overflow-x-auto scrollbar-none snap-x snap-mandatory"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(null)}
         >
           {slides.map((img, i) => (
             <motion.figure
               key={i}
-              className="flex-shrink-0 snap-center pr-5 max-lg:pl-5 max-lg:pr-0"
+              className="flex-shrink-0 snap-center"
               variants={clipAnim}
               animate={inView ? "animate" : "initial"}
               custom={i}
@@ -64,34 +80,39 @@ const Slides = () => {
       <AnimatePresence mode="wait">
         {hovered && (
           <motion.div
-            className="fixed z-1000"
+            className="fixed bg-p/50 rounded-full backdrop-blur-[1rem] z-1000"
             style={{
               left: x,
               top: y,
-              transform: "translate(-50%, -50%)",
+              translateX: "-50%",
+              translateY: "-50%",
               pointerEvents: "none",
             }}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0 }}
             animate={{
               opacity: 1,
-              transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+              scale: 1,
+              transition: { duration: 0.25, ease: [0.76, 0, 0.24, 1] },
             }}
             exit={{
               opacity: 0,
+              scale: 0,
               transition: {
-                duration: 0.5,
-
+                duration: 0.25,
                 ease: [0.76, 0, 0.24, 1],
+                delay: 0.5,
               },
             }}
           >
-            <motion.div
-              className="bg-s w-40 h-40 rounded-full flex items-center justify-center gap-2"
-              {...textSlideAnim}
-            >
-              <p className="text-p font-neue-medium text-[16px] leading-[1.2em]">
-                Arraste
-              </p>
+            <motion.div className="w-40 h-40 flex items-center justify-center gap-2">
+              <div className="h-fit overflow-hidden">
+                <motion.p
+                  className="text-s font-neue-medium text-[1rem]"
+                  {...textSlideAnim}
+                >
+                  Drag
+                </motion.p>
+              </div>
             </motion.div>
           </motion.div>
         )}

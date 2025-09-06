@@ -1,16 +1,14 @@
-"use client";
-
-import Lenis from "lenis";
 import { useEffect, useRef } from "react";
-import { useReserveStore } from "@/store/zustand";
+import Lenis from "lenis";
 
-import HorizontalTransition from "@/loader";
 import Hero from "@/components/hero";
 import About from "@/components/about";
 import ReserveWrapper from "@/components/reserve-wrapper";
 import Footer from "@/components/footer";
 import Nav from "@/components/nav";
-
+import { useReserveStore } from "@/store/zustand";
+import Loading from "@/loader";
+ 
 const HomePage = () => {
   const lenisRef = useRef(null);
   const { reserveOpen } = useReserveStore();
@@ -32,15 +30,12 @@ const HomePage = () => {
 
   return (
     <>
-      <HorizontalTransition />
+      <Loading />
       <Nav lenis={lenisRef} />
 
       <Hero onClick={reserveOpen} />
-
       <About onClick={reserveOpen} lenis={lenisRef} />
-
       <ReserveWrapper onClick={reserveOpen} />
-
       <Footer onClick={reserveOpen} lenis={lenisRef} />
     </>
   );

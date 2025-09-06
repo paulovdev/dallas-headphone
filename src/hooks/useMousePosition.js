@@ -4,8 +4,8 @@ import { useMotionValue, useSpring } from "framer-motion";
 export function useMousePosition() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const smoothX = useSpring(x, { stiffness: 500, damping: 55 });
-  const smoothY = useSpring(y, { stiffness: 500, damping: 55 });
+  const smoothX = useSpring(x, { stiffness: 600, damping: 75 });
+  const smoothY = useSpring(y, { stiffness: 600, damping: 75 });
 
   useEffect(() => {
     const handleMouseMove = (e) => {

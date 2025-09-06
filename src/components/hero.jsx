@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Button from "./button";
 
 const textSlideAnim = {
   initial: { y: "100%" },
@@ -8,7 +9,7 @@ const textSlideAnim = {
     transition: {
       duration: 0.75,
       ease: [0.33, 1, 0.68, 1],
-      delay: 1.5 + 0.075 * i,
+      delay: 2 + 0.075 * i,
     },
   }),
   animate2: {
@@ -16,14 +17,15 @@ const textSlideAnim = {
     transition: {
       duration: 0.75,
       ease: [0.33, 1, 0.68, 1],
-      delay: 1.5,
+      delay: 2,
     },
   },
 };
 const phrases = [
-  "O primeiro headset inteligente que se adapta a você.",
-  "Som imersivo e bateria que dura a semana inteira.",
-  "Simples, prático e feito para elevar sua experiência.",
+  "The first smart headset that adapts to you.",
+  "Immersive sound and a battery that lasts all week.",
+  "Simple, practical, and designed to elevate your",
+  " experience.",
 ];
 
 const Hero = ({ onClick }) => {
@@ -61,7 +63,7 @@ const Hero = ({ onClick }) => {
                 {phrases.map((phrase, i) => (
                   <div key={i} className="overflow-hidden w-full">
                     <motion.p
-                      className="text-s font-neue-regular text-[20px] leading-[1.2em] tracking-[-0.01em]"
+                      className="text-s font-neue-regular text-[1.25rem] leading-[1.2em] tracking-[-0.01em]"
                       custom={i}
                       variants={textSlideAnim}
                       initial="initial"
@@ -72,23 +74,20 @@ const Hero = ({ onClick }) => {
                   </div>
                 ))}
               </div>
-
-              <button
-                className="w-[200px] h-[45px] 
-                text-s text-[16px] font-neue-medium
-                bg-t rounded-full 
-                flex items-center justify-center
-               hover:bg-t/75 transition-all duration-300  cursor-pointer"
+              <Button
+                text="Book"
+                inBgColor="bg-t"
+                outBgColor="bg-s"
+                inTextColor="text-p"
+                outTextColor="text-s"
                 onClick={onClick}
-              >
-                Reservar
-              </button>
+              />
             </div>
           </div>
           <div className="h-full flex flex-col items-start justify-end">
             <div className="w-full h-fit overflow-hidden">
               <motion.h1
-                className="text-s font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+                className="text-s font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
                 variants={textSlideAnim}
                 initial="initial"
                 animate="animate2"
@@ -98,7 +97,7 @@ const Hero = ({ onClick }) => {
             </div>
             <div className="w-full h-fit overflow-hidden">
               <motion.h1
-                className=" text-t font-neue-regular text-[64px] leading-[1.08] tracking-[-0.03em] max-lg:text-[48px]"
+                className=" text-t font-neue-regular text-[4rem] leading-[1.08] tracking-[-0.03em] max-lg:text-[3rem]"
                 variants={textSlideAnim}
                 initial="initial"
                 animate="animate2"

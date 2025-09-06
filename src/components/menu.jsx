@@ -71,9 +71,9 @@ const overlayAnim = {
 
 const navLinks = [
   { href: "#hero", label: "Dallas®" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "Reserve agora", label: "Reserve agora" },
-  { href: "#footer", label: "Contato" },
+  { href: "#about", label: "About" },
+  { href: "Book", label: "Book now!" },
+  { href: "#footer", label: "Contact" },
 ];
 
 const Menu = ({ menu, setMenu, reserveOpen, lenis }) => {
@@ -87,7 +87,7 @@ const Menu = ({ menu, setMenu, reserveOpen, lenis }) => {
   }, []);
 
   const handleLinkClick = (nav) => {
-    if (nav === "Reserve agora") {
+    if (nav === "Book") {
       reserveOpen();
       setMenu(false);
     }
@@ -122,7 +122,7 @@ const Menu = ({ menu, setMenu, reserveOpen, lenis }) => {
                   animate="animate"
                   exit="exit"
                   onClick={() => handleLinkClick(nav.href)}
-                  className="text-p font-neue-regular text-[62px] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[52px] max-md:text-[48px]"
+                  className="text-p font-neue-regular text-[62px] leading-[1.08] tracking-[-0.03em] cursor-pointer max-lg:text-[52px] max-md:text-[3rem]"
                 >
                   {nav.label}
                 </motion.p>
