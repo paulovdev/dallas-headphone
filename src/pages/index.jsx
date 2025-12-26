@@ -8,7 +8,7 @@ import Footer from "@/components/footer";
 import Nav from "@/components/nav";
 import { useReserveStore } from "@/store/zustand";
 import Loading from "@/loader";
- 
+
 const HomePage = () => {
   const lenisRef = useRef(null);
   const { reserveOpen } = useReserveStore();

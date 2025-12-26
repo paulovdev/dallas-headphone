@@ -3,15 +3,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const clipAnim = {
+export const clipAnim = {
   initial: { clipPath: "inset(100% 0% 0% 0%)" },
   animate: (i) => ({
     clipPath: "inset(0% 0% 0% 0%)",
     transition: {
       duration: 0.75,
       ease: [0.33, 1, 0.68, 1],
-      delay: 0.15 * i,
+      delay: 0.25 + 0.075 * i,
     },
   }),
 };
@@ -54,33 +59,48 @@ const Slides = () => {
     <>
       <div className="size-full pt-20" ref={ref}>
         <div
-          className="max-lg:pl-4 pr-4  flex items-start gap-4 overflow-x-auto scrollbar-none snap-x snap-mandatory"
+          className="max-lg:pl-4 w-fit pr-0 flex items-start gap-2 overflow-x-auto scrollbar-none snap-x snap-mandatory"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(null)}
         >
-          {slides.map((img, i) => (
-            <motion.figure
-              key={i}
-              className="flex-shrink-0 snap-center"
-              variants={clipAnim}
-              animate={inView ? "animate" : "initial"}
-              custom={i}
-            >
-              <Image
-                src={img}
-                width={2000}
-                height={2000}
-                className="w-[500px] h-[325px] object-cover rounded-[1rem] max-lg:w-[350px] max-lg:h-[250px]"
-                alt={`Slide ${i + 1}`}
-              />
-            </motion.figure>
-          ))}
+          <Swiper
+            autoplay={{ delay: 5000 }}
+            loop={true}
+            modules={[Autoplay]}
+            spaceBetween={8}
+            breakpoints={{
+              0: { slidesPerView: 1.2 },
+              768: { slidesPerView: 2.2 },
+              992: { slidesPerView: 3.2 },
+            }}
+          >
+            {slides.map((img, i) => (
+              <SwiperSlide key={i} className="w-fit!">
+                <motion.figure
+                  key={i}
+                  {...clipAnim}
+                  variants={clipAnim}
+                  animate={inView ? "animate" : "initial"}
+                  custom={i}
+                  className="size-full overflow-hidden"
+                >
+                  <Image
+                    src={img}
+                    width={2000}
+                    height={2000}
+                    className="w-[500px] h-[325px] object-cover rounded-[1rem] max-lg:w-[350px] max-lg:h-[250px]"
+                    alt={`Slide ${i + 1}`}
+                  />
+                </motion.figure>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       <AnimatePresence mode="wait">
         {hovered && (
           <motion.div
-            className="fixed bg-p/50 rounded-full backdrop-blur-[1rem] z-1000"
+            className="fixed bg-p/50 rounded-full backdrop-blur-lg z-1000 "
             style={{
               left: x,
               top: y,
