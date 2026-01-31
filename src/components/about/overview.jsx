@@ -66,9 +66,8 @@ const Overview = () => {
             <div className="w-full h-fit overflow-hidden">
               {section.descriptions.map((line, i) => (
                 <>
-                  <div className="w-full h-fit overflow-hidden">
+                  <div className="w-full h-fit overflow-hidden" key={i}>
                     <motion.p
-                      key={i}
                       className="text-p/75 font-neue-regular text-[1rem] leading-[1.2em]"
                       variants={textSlideAnim}
                       initial="initial"

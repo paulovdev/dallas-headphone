@@ -77,7 +77,6 @@ const Slides = () => {
             {slides.map((img, i) => (
               <SwiperSlide key={i} className="w-fit!">
                 <motion.figure
-                  key={i}
                   {...clipAnim}
                   variants={clipAnim}
                   animate={inView ? "animate" : "initial"}

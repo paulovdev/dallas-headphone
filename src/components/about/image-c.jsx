@@ -24,7 +24,7 @@ const ImageC = ({ img, className }) => {
         variants={clipAnim}
         animate={inView ? "animate" : "initial"}
       >
-        <Image src={img} width={2000} height={2000} className={className} />
+        <Image src={img} width={2000} height={2000} className={className} alt="" />
       </motion.figure>
     </div>
   );

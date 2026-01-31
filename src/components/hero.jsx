@@ -49,7 +49,8 @@ const Hero = ({ onClick }) => {
             <img
               src="/images/headset-black.jpg"
               className="size-full object-cover brightness-75"
-              fill
+              width={3000}
+              height={3000}
               alt="Dallas-background"
             />
           </figure>
